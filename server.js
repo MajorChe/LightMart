@@ -3,7 +3,7 @@ require("dotenv").config();
 
 // Web server config
 const PORT = process.env.PORT || 8080;
-const sassMiddleware = require("./lib/sass-middleware");
+//const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 //   })
 // );
 
-app.use(express.static("public"));
+ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -51,6 +51,15 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.get("/", (req, res) => {
   res.render("favourites");
 });
+
+app.get("/favourites", (req, res) => {
+  res.render("favourites");
+});
+
+app.get("/mypostings", (req, res) => {
+  res.render("mypostings");
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
