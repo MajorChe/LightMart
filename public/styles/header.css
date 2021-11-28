@@ -1,0 +1,41 @@
+#header {
+  background-color: #edd9d9;
+  height: 6em;
+}
+
+#header nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+#header .navbar{
+  padding: 0%;
+}
+
+#header nav a {
+  color: black;
+  font-size: 1.5rem;
+  padding-top: 30px;
+  padding-left: 20px;
+}
+
+#header nav .login-register {
+  font-size: 1.5rem;
+  padding-top: 30px;
+  padding-right: 20px;
+}
+
+#header nav .form-inline {
+  padding-right: 20px;
+}
+
+#navbarNavAltMarkup {
+  background-color: #edd9d9;
+  text-align: center;
+}
+
+
+#navbarNavAltMarkup .form-inline {
+  justify-content: center;
+  padding-bottom: 10px;
+}
