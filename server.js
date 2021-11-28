@@ -49,8 +49,9 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("login");
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
