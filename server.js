@@ -49,7 +49,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("favourites");
+  res.render("index");
+  // render product template to visualize front end changes -- switch back to index after***
 });
 
 app.get("/favourites", (req, res) => {
@@ -60,6 +61,9 @@ app.get("/mypostings", (req, res) => {
   res.render("mypostings");
 });
 
+app.get("/product", (req, res) => {
+  res.render("product");
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

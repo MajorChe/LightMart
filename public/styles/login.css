@@ -10,12 +10,10 @@ body {
   position: relative;
   overflow-y: hidden;
 }
-
 a {
   text-decoration: none;
   color: #444444;
 }
-
 .login-reg-panel {
   position: relative;
   top: 50%;
@@ -28,7 +26,10 @@ a {
   height: 400px;
   background-color: rgba(236, 48, 20, 0.9);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .white-panel {
   background-color: white;
   height: 500px;
@@ -40,16 +41,25 @@ a {
   z-index: 0;
   box-shadow: 0 0 15px 9px #00000096;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .login-reg-panel input[type=radio] {
   position: relative;
   display: none;
 }
+<<<<<<< HEAD
 
 .login-reg-panel {
   color: #B8B8B8;
 }
 
+=======
+.login-reg-panel {
+  color: #B8B8B8;
+}
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .login-reg-panel #label-login,
 .login-reg-panel #label-register {
   border: 1px solid #9E9E9E;
@@ -62,7 +72,10 @@ a {
   font-weight: 600;
   font-size: 18px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .login-info-box {
   width: 30%;
   padding: 0 50px;
@@ -71,7 +84,10 @@ a {
   position: absolute;
   text-align: left;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .register-info-box {
   width: 30%;
   padding: 0 50px;
@@ -80,11 +96,17 @@ a {
   position: absolute;
   text-align: left;
 }
+<<<<<<< HEAD
 
 .right-log {
   right: 50px !important;
 }
 
+=======
+.right-log {
+  right: 50px !important;
+}
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .login-show,
 .register-show {
   z-index: 1;
@@ -95,12 +117,18 @@ a {
   text-align: left;
   padding: 50px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .show-log-panel {
   display: block;
   opacity: 0.9;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .login-show input[type=text], .login-show input[type=password] {
   width: 100%;
   display: block;
@@ -109,7 +137,10 @@ a {
   border: 1px solid #b5b5b5;
   outline: none;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .login-show input[type=button] {
   max-width: 150px;
   width: 100%;
@@ -122,12 +153,18 @@ a {
   float: right;
   cursor: pointer;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .login-show a {
   display: inline-block;
   padding: 10px 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .register-show input[type=text], .register-show input[type=password] {
   width: 100%;
   display: block;
@@ -136,7 +173,10 @@ a {
   border: 1px solid #b5b5b5;
   outline: none;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .register-show input[type=button] {
   max-width: 150px;
   width: 100%;
@@ -149,7 +189,10 @@ a {
   float: right;
   cursor: pointer;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
 .credit {
   position: absolute;
   bottom: 10px;
@@ -164,8 +207,15 @@ a {
   letter-spacing: 1px;
   z-index: 99;
 }
+<<<<<<< HEAD
 
 a {
   text-decoration: none;
   color: #2c7715;
 }
+=======
+a {
+  text-decoration: none;
+  color: #2c7715;
+}
+>>>>>>> 2650839cbcd4eddfa794c4ae54f233381bcfe002
