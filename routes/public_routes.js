@@ -2,12 +2,14 @@ const express = require("express");
 const router = express.Router();
 const userfn = require("../db/01_indexquery");
 
-
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const session_id = req.session.id;
-    const templateVars = {session_id}
-    res.render("index",templateVars);
+    userfn.getUserbyid(session_id)
+    .then(user => {
+      const templateVars = {user}
+      res.render("index", templateVars);
+    })
   });
 
   router.get("/login", (req, res) => {
@@ -28,6 +30,11 @@ module.exports = (db) => {
       .catch((err) => {
         res.send("Please check your credentials");
       });
+  });
+
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.redirect("/");
   });
 
   return router;

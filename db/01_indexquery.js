@@ -9,4 +9,12 @@ const getUser = (email) => {
     });
 };
 
-module.exports = {getUser}
+const getUserbyid = (id) => {
+  return pool
+    .query(`SELECT * FROM users WHERE id = $1`, [id])
+    .then((response) => {
+      return response.rows[0];
+    });
+};
+
+module.exports = {getUser,getUserbyid}
