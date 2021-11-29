@@ -1,4 +1,3 @@
-// load .env data into process.env
 require("dotenv").config();
 
 // Web server config
@@ -9,16 +8,11 @@ const app = express();
 const morgan = require("morgan");
 
 // PG database client/connection setup
-// const { Pool } = require("pg");
-// const dbParams = require("./lib/db.js");
-// const db = new Pool(dbParams);
-// db.connect();
-
 const dbConnection = require('./lib/db');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+// The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
@@ -47,6 +41,10 @@ app.get("/", (req, res) => {
   // render product template to visualize front end changes -- switch back to index after***
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
 app.get("/favourites", (req, res) => {
   res.render("favourites");
 });
@@ -58,6 +56,11 @@ app.get("/mypostings", (req, res) => {
 app.get("/product", (req, res) => {
   res.render("product");
 });
+
+app.get("/new", (req, res) => {
+  res.render("new");
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
