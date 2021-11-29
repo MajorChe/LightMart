@@ -1,6 +1,5 @@
 #header {
   background-color: #edd9d9;
-  height: 6em;
 }
 
 #header nav {
@@ -9,20 +8,17 @@
 }
 
 #header .navbar{
-  padding: 0%;
+  padding: 15px;
 }
-
 
 #header nav a {
   color: black;
   font-size: 1.5rem;
-  padding-top: 30px;
   padding-left: 20px;
 }
 
 #header nav .login-register {
   font-size: 1.5rem;
-  padding-top: 30px;
   padding-right: 20px;
 }
 
@@ -30,13 +26,4 @@
   padding-right: 20px;
 }
 
-#navbarNavAltMarkup {
-  background-color: #edd9d9;
-  text-align: center;
-}
 
-
-#navbarNavAltMarkup .form-inline {
-  justify-content: center;
-  padding-bottom: 10px;
-}
