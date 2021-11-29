@@ -1,22 +1,34 @@
-/*
- * All routes for Widgets are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /widgets
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
+const express = require("express");
+const router = express.Router();
+const userfn = require("../db/01_indexquery");
 
-const express = require('express');
-const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    res.render("index");
-    // render product template to visualize front end changes -- switch back to index after***
+    const session_id = req.session.id;
+    const templateVars = {session_id}
+    res.render("index",templateVars);
   });
 
   router.get("/login", (req, res) => {
     res.render("login");
   });
 
+  router.post("/login", (req, res) => {
+    userfn
+      .getUser(req.body.email)
+      .then((user) => {
+        if (user.password === req.body.password) {
+          req.session.id = user.id;
+          res.redirect("/");
+        } else {
+          res.send("Please check your credentials");
+        }
+      })
+      .catch((err) => {
+        res.send("Please check your credentials");
+      });
+  });
+
   return router;
-}
+};

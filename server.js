@@ -6,6 +6,9 @@ const PORT = process.env.PORT || 8080;
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
+app.use(cookieParser());
 
 // PG database client/connection setup
 const dbConnection = require('./lib/db');
@@ -17,7 +20,12 @@ app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+  })
+);
 
  app.use(express.static("public"));
 
@@ -41,9 +49,9 @@ app.get("/", (req, res) => {
   // render product template to visualize front end changes -- switch back to index after***
 });
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
+// app.get("/login", (req, res) => {
+//   res.render("login");
+// });
 
 app.get("/favourites", (req, res) => {
   res.render("favourites");
