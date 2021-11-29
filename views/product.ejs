@@ -20,7 +20,25 @@
   <!-- body HTML -->
   <body>
     <%- include('partials/user_header') %>
+
+    <!-- filter -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <li><a class="dropdown-item active" href="#">Price: high to low</a></li>
+        <li><a class="dropdown-item" href="#">Price: low to high</a></li>
+      </ul>
+    </div>
+
+
+
+
   <main class="container">
+    <section id="filter">
+
+    </section>
 
     <!-- Left Column-->
     <div class="left-column">
@@ -40,7 +58,11 @@
 
       <!-- NFT Pricing -->
       <div class="product-price">
-        <span><b>$2500.00</b>CAD</span>
+        <div class="price-and-favorite"></div>
+          <span><b>$</b>2500.00</span>
+        </div>
+
+        <textarea placeholder="Hello.." class="contact-seller"></textarea>
         <form action="" method="POST"><button type="submit" class="btn btn-outline-primary">Contact Seller</button></form>
       </div>
     </div>
