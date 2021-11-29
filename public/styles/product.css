@@ -17,8 +17,7 @@ html, body {
 
 /* left and right containers */
 .left-column {
-  width: 65%;
-  position: relative;
+  flex-grow: 1;
 }
 
 .right-column {
