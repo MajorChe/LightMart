@@ -56,47 +56,17 @@
    <div class="container mt-5" id="about">
              <h1 class="text-center py-4">Featured NFT's </h1>
              <div class="row pb-5 mb-4">
+               <% for(let i = 0; i< 4; i++) { %>
               <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                 <!-- Card-->
                 <div class="card rounded shadow-sm border-0">
-                  <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-1_gthops.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
+                  <div class="card-body p-4"><img src="<%= user.image%>" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">
                     <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
                     <p class="small text-muted font-italic">$156.00</p>
                   </div>
                 </div>
               </div>
-
-              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <!-- Card-->
-                <div class="card rounded shadow-sm border-0">
-                  <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-2_g4qame.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
-                    <p class="small text-muted font-italic">$25.00</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <!-- Card-->
-                <div class="card rounded shadow-sm border-0">
-                  <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-3_rk25rt.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
-                    <p class="small text-muted font-italic">$200</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <!-- Card-->
-                <div class="card rounded shadow-sm border-0">
-                  <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-4_vgfjy9.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-                    <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
-                    <p class="small text-muted font-italic">$78.00</p>
-                    <ul class="list-inline small">
-                      <li href="#" class="list-inline-item m-0"><i class="fa fa-star text-success"></i> <a href="#" >Click here for more deails</a></li>
-                    </ul>
-                  </div>
-                </div>
+              <%}%>
               </div>
             </div>
             </div>
@@ -109,7 +79,7 @@
           <div class="container">
               <div class="row">
                   <div class="col-12 col-md-3">
-                      <h3>Fixr</h3>
+                      <h3>LightMart</h3>
                       <small class="d-block text-muted">© 2018-2019</small>
                       <small class="text-muted">All Rights Reserved.</small>
                   </div>
@@ -142,10 +112,10 @@
                                       <a href="#" class="text-muted">Angular</a>
                                   </li>
                                   <li>
-                                      <a href="#" class="text-muted">Java</a>
+                                      <a href="#" class="text-muted">JavaScript</a>
                                   </li>
                                   <li>
-                                      <a href="#" class="text-muted">Camunda API</a>
+                                      <a href="#" class="text-muted">React</a>
                                   </li>
                                   <li>
                                       <a href="#" class="text-muted">Postman</a>
@@ -178,7 +148,7 @@
                                       <a href="#" class="text-muted">Team</a>
                                   </li>
                                   <li>
-                                      <a href="#" class="text-muted">Privact</a>
+                                      <a href="#" class="text-muted">Careers</a>
                                   </li>
                                   <li>
                                       <a href="#" class="text-muted">Terms</a>

@@ -11,7 +11,7 @@ const getUser = (email) => {
 
 const getUserbyid = (id) => {
   return pool
-    .query(`SELECT * FROM users WHERE id = $1`, [id])
+    .query(`SELECT users.id, users.email, products.image FROM users JOIN products ON owner_id = users.id WHERE users.id = $1`, [id])
     .then((response) => {
       return response.rows[0];
     });
