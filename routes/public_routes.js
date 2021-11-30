@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const userfn = require("../db/01_indexquery");
+const {getProduct} = require("../db/02_productquery");
+
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -36,6 +38,18 @@ module.exports = (db) => {
     req.session = null;
     res.redirect("/");
   });
+
+  // create post route for new product form
+  // product info taken from form gets added to db
+  router.post("/mypostings", (req, res) => {
+
+    const newProduct = `INSERT INTO products (title, owner_id, price, description, image, date_created, is_active, is_sold)
+    VALUES (${req.body.title}, ${req.body.price}, ${req.body.description}, ${req.body.image}, Now(), TRUE, FALSE);`
+
+    res.redirect('/mypostings/')
+  });
+
+
 
   return router;
 };
