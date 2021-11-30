@@ -20,6 +20,185 @@
 </head>
 <body>
   <%- include('partials/user_header') %>
+
+  <title>Home</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" rel="stylesheet" type="text/css">
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+<body>
+<!-- navbar starts -->
+
+<!-- nav bar ends -->
+
+<div class="jumbotron ">
+<div class="jumbotron-overlay ">
+<div class="container jumbotron-padding  text-center">
+  <% if (user) { %>
+<h1 class="display-4">Welcome to the future <%= user.email%></h1>
+  <% } else { %>
+  <h1 class="display-4">Welcome to the future</h1>
+  <% } %>
+<p >You have entered the new world of NFTs</p>
+   <p>
+      <a href="https://www.theverge.com/22310188/nft-explainer-what-is-blockchain-crypto-art-faq" class="btn btn-lg btn-success btn-circle my-4 mr-3">Learn More</a>
+   </p>
+</div>
+</div>
+</div>
+
+
+   <div class="container mt-5" id="about">
+             <h1 class="text-center py-4">Featured NFT's </h1>
+             <div class="row pb-5 mb-4">
+              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card rounded shadow-sm border-0">
+                  <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-1_gthops.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
+                    <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
+                    <p class="small text-muted font-italic">$156.00</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card rounded shadow-sm border-0">
+                  <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-2_g4qame.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
+                    <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
+                    <p class="small text-muted font-italic">$25.00</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card rounded shadow-sm border-0">
+                  <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-3_rk25rt.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
+                    <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
+                    <p class="small text-muted font-italic">$200</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card rounded shadow-sm border-0">
+                  <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-4_vgfjy9.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
+                    <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
+                    <p class="small text-muted font-italic">$78.00</p>
+                    <ul class="list-inline small">
+                      <li href="#" class="list-inline-item m-0"><i class="fa fa-star text-success"></i> <a href="#" >Click here for more deails</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+
+
+<!-- blog post end -->
+<!-- footer start -->
+<footer class="bg-dark text-light py-5 mt-5">
+          <div class="container">
+              <div class="row">
+                  <div class="col-12 col-md-3">
+                      <h3>Fixr</h3>
+                      <small class="d-block text-muted">© 2018-2019</small>
+                      <small class="text-muted">All Rights Reserved.</small>
+                  </div>
+                  <!--end of col-->
+                  <div class="col-12 col-md-9">
+
+                      <div class="row no-gutters">
+                          <div class="col-6 col-lg-3">
+                               <h5>Features</h5>
+                              <ul class="list-unstyled">
+                                  <li>
+                                      <a href="#" class="text-muted">Ready to ship</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Light weight</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted"> Responsive</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Inner Pages</a>
+                                  </li>
+                              </ul>
+                          </div>
+                          <!--end of col-->
+                          <div class="col-6 col-lg-3">
+                              <h5>Resources</h5>
+                              <ul class="list-unstyled">
+                                  <li>
+                                      <a href="#" class="text-muted">Angular</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Java</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Camunda API</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Postman</a>
+                                  </li>
+                              </ul>
+                          </div>
+                          <!--end of col-->
+                          <div class="col-6 col-lg-3">
+                               <h5>Help</h5>
+                              <ul class="list-unstyled">
+                                  <li>
+                                      <a href="#" class="text-muted">Forum</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">FAQ</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Projects</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Site map</a>
+                                  </li>
+                              </ul>
+                          </div>
+                          <!--end of col-->
+                          <div class="col-6 col-lg-3">
+                              <h5>About</h5>
+                              <ul class="list-unstyled">
+                                  <li>
+                                      <a href="#" class="text-muted">Team</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Privact</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Terms</a>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="text-muted">Investment</a>
+                                  </li>
+                              </ul>
+                          </div>
+                          <!--end of col-->
+                      </div>
+                      <!--end of row-->
+                  </div>
+                  <!--end of col-->
+              </div>
+              <!--end of row-->
+          </div>
+          <!--end of container-->
+      </footer>
+<!-- footer end -->
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

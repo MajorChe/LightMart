@@ -1,27 +1,41 @@
-/*
- * All routes for Widgets are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /widgets
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
-
-const express = require('express');
-const router  = express.Router();
+const express = require("express");
+const router = express.Router();
+const userfn = require("../db/01_indexquery");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM widgets`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
-        const widgets = data.rows;
-        res.json({ widgets });
+    const session_id = req.session.id;
+    userfn.getUserbyid(session_id)
+    .then(user => {
+      const templateVars = {user}
+      res.render("index", templateVars);
+    })
+  });
+
+  router.get("/login", (req, res) => {
+    res.render("login");
+  });
+
+  router.post("/login", (req, res) => {
+    userfn
+      .getUser(req.body.email)
+      .then((user) => {
+        if (user.password === req.body.password) {
+          req.session.id = user.id;
+          res.redirect("/");
+        } else {
+          res.send("Please check your credentials");
+        }
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+      .catch((err) => {
+        res.send("Please check your credentials");
       });
   });
+
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.redirect("/");
+  });
+
   return router;
 };
