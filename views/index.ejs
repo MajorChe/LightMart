@@ -39,7 +39,11 @@
 <div class="jumbotron ">
 <div class="jumbotron-overlay ">
 <div class="container jumbotron-padding  text-center">
-<h1 class="display-4">Welcome to the future</h1>
+  <% if (user) { %>
+<h1 class="display-4">Welcome to the future <%= user.name%></h1>
+  <% } else { %>
+  <h1 class="display-4">Welcome to the future</h1>
+  <% } %>
 <p >You have entered the new world of NFTs</p>
    <p>
       <a href="https://www.theverge.com/22310188/nft-explainer-what-is-blockchain-crypto-art-faq" class="btn btn-lg btn-success btn-circle my-4 mr-3">Learn More</a>

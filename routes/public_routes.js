@@ -1,52 +1,41 @@
-/*
- * All routes for Widgets are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /widgets
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
-
-const express = require('express');
-const router  = express.Router();
-const productFns = require('../db/uQueries');
+const express = require("express");
+const router = express.Router();
+const userfn = require("../db/01_indexquery");
 
 module.exports = (db) => {
-// GET /posts/:id
-router.get('/myfavourites/:id', (req, res) => {
-  productFns.getUsersFavourites(req.params.id)
-    .then((data) => {
-      let favourites = data
-      const templateVars = { favourites }
-      console.log (templateVars)
-      res.render("favourites", templateVars);
-    });
-});
+  router.get("/", (req, res) => {
+    const session_id = req.session.id;
+    userfn.getUserbyid(session_id)
+    .then(user => {
+      const templateVars = {user}
+      res.render("index", templateVars);
+    })
+  });
 
-router.get('/mypostings/:id', (req, res) => {
-  productFns.getProductById(req.params.id)
-    .then((product) => {
-      res.json(product);
-    });
-});
+  router.get("/login", (req, res) => {
+    res.render("login");
+  });
 
-router.get('//:id', (req, res) => {
-  productFns.getProductById(req.params.id)
-    .then((product) => {
-      res.json(product);
-    });
-});
+  router.post("/login", (req, res) => {
+    userfn
+      .getUser(req.body.email)
+      .then((user) => {
+        if (user.password === req.body.password) {
+          req.session.id = user.id;
+          res.redirect("/");
+        } else {
+          res.send("Please check your credentials");
+        }
+      })
+      .catch((err) => {
+        res.send("Please check your credentials");
+      });
+  });
 
-router.get('/:id', (req, res) => {
-  productFns.getProductById(req.params.id)
-    .then((product) => {
-      res.json(product);
-    });
-});
-router.get('/:id', (req, res) => {
-  productFns.getProductById(req.params.id)
-    .then((product) => {
-      res.json(product);
-    });
-});
-return router
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.redirect("/");
+  });
+
+  return router;
 };
-

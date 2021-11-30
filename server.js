@@ -6,6 +6,9 @@ const PORT = process.env.PORT || 8080;
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
+app.use(cookieParser());
 
 // PG database client/connection setup
 const dbConnection = require('./lib/db');
@@ -17,20 +20,25 @@ app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+  })
+);
 
  app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-// const usersRoutes = require("./routes/users");
-const usersRoutes = require("./routes/public_routes");
+const publicRoutes = require("./routes/public_routes");
+const usersRoutes = require("./routes/users");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(dbConnection));
-app.use("/users", usersRoutes(dbConnection));
-// app.use("/api/widgets", widgetsRoutes(dbConnection));
+app.use("/", publicRoutes(dbConnection));
+app.use("/mypostings", usersRoutes(dbConnection));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -42,17 +50,17 @@ app.get("/", (req, res) => {
   // render product template to visualize front end changes -- switch back to index after***
 });
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
+// app.get("/login", (req, res) => {
+//   res.render("login");
+// });
 
-app.get("/favourites", (req, res) => {
-  res.render("favourites");
-});
+// app.get("/myfavourites", (req, res) => {
+//   res.render("favourites");
+// });
 
-app.get("/mypostings", (req, res) => {
-  res.render("mypostings");
-});
+// app.get("/mypostings", (req, res) => {
+//   res.render("mypostings");
+// });
 
 app.get("/product", (req, res) => {
   res.render("product");

@@ -5,13 +5,19 @@
       <span class="navbar-toggler-icon" style="margin-right: 15px;"><i class="fas fa-angle-double-down"style="color:rgb(190, 183, 113); font-size:40px;"></i>
       </span>
     </button>
+    <% if (!user) { %>
+      <div class="login-register">
+        <a href="../login"><button class="btn btn-outline-dark my-2 my-sm-0" type="button">LOGIN</button></a>
+        <a href="/register"><button class="btn btn-outline-dark my-2 my-sm-0" type="button">REGISTER</button></a>
+      </div>
+    <% } else { %>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="../favourites">MY FAVOURITES</a>
+          <a class="nav-link" href="../users/myfavourites">MY FAVOURITES</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../mypostings">MY POSTINGS</a>
+          <a class="nav-link" href="../users/mypostings">MY POSTINGS</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../new">CREATE POSTING</a>
@@ -22,5 +28,6 @@
         <a href="/logout"><button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Logout</button></a>
       </form>
     </div>
+    <% } %>
   </nav>
 </header>
