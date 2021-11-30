@@ -11,20 +11,12 @@ const productFns = require('../db/uQueries');
 
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
 
   router.get('/myfavourites', (req, res) => {
+    const session_id = req.session.id;
+    if(!session_id) {
+      res.redirect("/")
+    } else {
     productFns.getUsersFavourites(req.session.id)
       .then((data) => {
         let favourites = data
@@ -32,6 +24,7 @@ module.exports = (db) => {
         const templateVars = { favourites, user }
         res.render("favourites", templateVars);
       });
+    }
   });
 
 
@@ -75,10 +68,6 @@ module.exports = (db) => {
         res.redirect(`/users/mypostings`);
       });
   });
-
-
-
-
 
   return router;
 };
