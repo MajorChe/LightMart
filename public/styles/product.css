@@ -12,6 +12,23 @@
   width: 65%;
 }
 
+/* price filter */
+
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: -40px;
+}
+
+.filters > div {
+  margin: 10px;
+}
+
+.filters select {
+  margin-left: 10px;
+}
 
 .right-column {
   width: 35%;
