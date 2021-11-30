@@ -12,6 +12,20 @@ module.exports = (db) => {
     })
   });
 
+  // router.get("/mypostings", (req, res) => {
+  //   const session_id = req.session.id;
+  //   if(!session_id) {
+  //     res.redirect("/")
+  //   } else {
+
+  //     userfn.getUserbyid(session_id)
+  //     .then(user => {
+  //       const templateVars = {user}
+  //       res.render("mypostings", templateVars);
+  //     })
+  //   }
+  // });
+
   router.get("/login", (req, res) => {
     res.render("login");
   });

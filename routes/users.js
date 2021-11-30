@@ -43,10 +43,9 @@ module.exports = (db) => {
       .then((data) => {
         console.log("is",data)
         if(data.length === 0){
-          console.log("it works")
           postings.push(1);
         }
-        console.log("postings is" ,postings)
+
         for(let i of data){
           if (i.is_sold === false) {
             postings.push(i)
