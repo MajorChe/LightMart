@@ -40,20 +40,6 @@ app.use("/users", usersRoutes(dbConnection));
 app.use("/", publicRoutes(dbConnection));
 // Note: mount other resources here, using the same pattern above
 
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
-
-
-
-// use this route to render products page
-app.get('/product', (req, res) => {
-  res.render('product');
-})
 
 
 app.listen(PORT, () => {

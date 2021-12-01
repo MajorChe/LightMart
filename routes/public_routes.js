@@ -12,51 +12,30 @@ module.exports = (db) => {
 
   router.get("/", (req, res) => {
     const session_id = req.session.id;
-    getProductbyPrice.getProductLtH().then(user => {
-          const templateVars = { user }
+    userfn.getproducts().then((user) => {
+      const templateVars = { user , session_id};
+      res.render("index", templateVars);
+    });
+  });
 
-          res.render('index', templateVars);
-        })
+  router.post("/", (req, res) => {
+    const session_id = req.session.id;
+    if (req.body.value === "asc") {
+      console.log("up we go");
+      userfn.getProductLowToHigh().then((user) => {
+        const templateVars = { user,session_id };
+        res.render("index", templateVars);
+      });
+    }
+    if (req.body.value === "desc") {
+      console.log("down we go");
+      userfn.getProductHighToLow().then((user) => {
+        const templateVars = { user, session_id };
 
-    // if no cookie exists - user is not logged in
-
-
-    })
-
-
-
-
-router.post("/", (req, res) => {
-
-if(req.body.value === "asc") {
-  console.log("up we go")
-  getProductbyPrice.getProductLtH().then(user => {
-    const templateVars = { user }
-console.log(user)
-    res.render('index', templateVars);
-  })
-}
-if(req.body.value === "desc") {
-  console.log("down we go")
-  getProductbyPrice.getProductHtL().then(user => {
-    const templateVars = { user }
-
-    res.render('index', templateVars);
-  })
-
-
-
- }
-})
-
-
-
-    // userfn.getUserbyid(session_id)
-    // .then(user => {
-    //   const templateVars = {user}
-    //   res.render("index", templateVars);
-    // })
-
+        res.render("index", templateVars);
+      });
+    }
+  });
 
   router.get("/login", (req, res) => {
     res.render("login");

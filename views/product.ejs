@@ -15,7 +15,21 @@
         src="https://kit.fontawesome.com/115a5a2ad4.js"
         crossorigin="anonymous"
       ></script>
-    <script type="text/javascript" src=""></script>
+  </head>
+
+  <!-- body HTML -->
+  <body>
+
+    <!-- filter -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <li><a class="dropdown-item active" href="#">Price: high to low</a></li>
+        <li><a class="dropdown-item" href="#">Price: low to high</a></li>
+      </ul>
+    </div>
 
 
 
@@ -46,8 +60,11 @@
           <span><b>$</b>2500.00</span>
         </div>
 
-        <textarea placeholder="Hello.." class="contact-seller"></textarea>
-        <form action="" method="POST"><button type="submit" class="btn btn-outline-primary">Contact Seller</button></form>
+
+        <form target="_blank" action="#" method="POST">
+          <textarea placeholder="Hello.." class="contact-seller" name="message"></textarea>
+          <button type="submit" class="btn btn-outline-primary">Contact Seller</button>
+        </form>
       </div>
     </div>
   </main>
