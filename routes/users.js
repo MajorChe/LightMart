@@ -5,68 +5,100 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
-const productFns = require('../db/uQueries');
-
+const express = require("express");
+const router = express.Router();
+const productFns = require("../db/uQueries");
+const userfn = require("../db/01_indexquery");
 
 module.exports = (db) => {
-
-  router.get('/myfavourites', (req, res) => {
+  router.get("/myfavourites", (req, res) => {
     const session_id = req.session.id;
-    if(!session_id) {
-      res.redirect("/")
+    if (!req.session.id) {
+      res.redirect("/");
     } else {
-    productFns.getUsersFavourites(req.session.id)
-      .then((data) => {
-        let favourites = data
-        const user = req.session.id
-        const templateVars = { favourites, user }
+      productFns.getUsersFavourites(req.session.id).then((data) => {
+        let favourites = data;
+        const user = req.session.id;
+        const templateVars = { favourites, user, session_id };
         res.render("favourites", templateVars);
       });
     }
   });
 
-
-  router.get('/mypostings/', (req, res) => {
-    let sold = []
-    let postings = []
-    const user = req.session.id
-    productFns.getUsersProducts(req.session.id)
-      .then((data) => {
-        console.log("is",data)
-        if(data.length === 0){
+  router.get("/mypostings/", (req, res) => {
+    const session_id = req.session.id;
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+      let sold = [];
+      let postings = [];
+      const user = req.session.id;
+      productFns.getUsersProducts(req.session.id).then((data) => {
+        //console.log("is", data);
+        if (data.length === 0) {
           postings.push(1);
         }
 
-        for(let i of data){
+        for (let i of data) {
           if (i.is_sold === false) {
-            postings.push(i)
-
+            postings.push(i);
           }
         }
-         for(let i of data){
-           if (i.is_sold === true) {
-             sold.push(i)
-           }
-      }
-      const templateVars = { postings, user, sold }
-      res.render("mypostings", templateVars)
-      })
-  })
-
-  router.post('/:id', (req, res) => {
-    productFns.markAsSold(req.session.id,req.params.id )
-      .then((data) => {
-        res.redirect(`/users/mypostings`);
+        for (let i of data) {
+          if (i.is_sold === true) {
+            sold.push(i);
+          }
+        }
+        const templateVars = { postings, user, sold, session_id };
+        res.render("mypostings", templateVars);
       });
+    }
   });
 
-  router.post('/delete/:id', (req, res) => {
-    productFns.deleteUsersProduct(req.session.id,req.params.id )
-      .then((data) => {
+  router.get("/new", (req, res) => {
+    const session_id = req.session.id;
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+    userfn.getUserbyid(req.session.id)
+    .then(user => {
+      const templateVars = {user, session_id}
+      res.render("new", templateVars);
+    })
+  }
+  });
+
+  router.post("/new", (req, res) => {
+    const title = req.body.title;
+    const price = req.body.price;
+    const description = req.body.description;
+    const image = req.body.image;
+    productFns.newProduct(title, price, description, image)
+    .then(res => {console.log(res)})
+    res.redirect("/users/mypostings");
+
+  });
+
+  router.post("/:id", (req, res) => {
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+      productFns.markAsSold(req.session.id, req.params.id).then((data) => {
         res.redirect(`/users/mypostings`);
       });
+    }
+  });
+
+  router.post("/delete/:id", (req, res) => {
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+      productFns
+        .deleteUsersProduct(req.session.id, req.params.id)
+        .then((data) => {
+          res.redirect(`/users/mypostings`);
+        });
+    }
   });
 
   return router;

@@ -5,26 +5,30 @@ const userfn = require("../db/01_indexquery");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const session_id = req.session.id;
-    userfn.getUserbyid(session_id)
-    .then(user => {
-      const templateVars = {user}
+    userfn.getproducts().then((user) => {
+      const templateVars = { user , session_id};
       res.render("index", templateVars);
-    })
+    });
   });
 
-  // router.get("/mypostings", (req, res) => {
-  //   const session_id = req.session.id;
-  //   if(!session_id) {
-  //     res.redirect("/")
-  //   } else {
+  router.post("/", (req, res) => {
+    const session_id = req.session.id;
+    if (req.body.value === "asc") {
+      console.log("up we go");
+      userfn.getProductLowToHigh().then((user) => {
+        const templateVars = { user,session_id };
+        res.render("index", templateVars);
+      });
+    }
+    if (req.body.value === "desc") {
+      console.log("down we go");
+      userfn.getProductHighToLow().then((user) => {
+        const templateVars = { user, session_id };
 
-  //     userfn.getUserbyid(session_id)
-  //     .then(user => {
-  //       const templateVars = {user}
-  //       res.render("mypostings", templateVars);
-  //     })
-  //   }
-  // });
+        res.render("index", templateVars);
+      });
+    }
+  });
 
   router.get("/login", (req, res) => {
     res.render("login");

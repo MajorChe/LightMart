@@ -8,7 +8,7 @@ CREATE TABLE products (
   price VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   image VARCHAR(255) NOT NULL,
-  date_created DATE NOT NULL,
+  date_created DATE NOT NULL DEFAULT CURRENT_DATE,
   is_active BOOLEAN NOT NULL DEFAULT TRUE,
   is_sold BOOLEAN NOT NULL DEFAULT TRUE
 );

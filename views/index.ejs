@@ -40,7 +40,8 @@
 <div class="jumbotron-overlay ">
 <div class="container jumbotron-padding  text-center">
   <% if (user) { %>
-<h1 class="display-4">Welcome to the future <%= user.name%></h1>
+<!-- <h1 class="display-4">Welcome to the future <%= user.name%></h1> -->
+<h1 class="display-4">Welcome to the future</h1>
   <% } else { %>
   <h1 class="display-4">Welcome to the future</h1>
   <% } %>
@@ -55,25 +56,31 @@
 
    <div class="container mt-5" id="about">
              <h1 class="text-center py-4">Featured NFT's </h1>
-             <div class="row pb-5 mb-4">
-               <% for(let i = 0; i< 4; i++) { %>
-              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <!-- Card-->
-                <div class="card rounded shadow-sm border-0">
-                  <%if(user) {%>
-                  <div class="card-body p-4"><img src="<%= user.image%>" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">
-                    <%} else {%>
-                      <div class="card-body p-4"><img src="https://hkgwtdvfyh.medianetwork.cloud/unsafe/600x600/filters:format(webp)/www.arweave.net/xcZPoccc-E3dWlkFitlkc2BhKJTyR6WqTczeZwEg-Cg/data.png" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">
-                    <%}%>
-                        <h5> <a href="./product" class="text-dark">Awesome product</a></h5>
-                    <p class="small text-muted font-italic">$156.00</p>
+             <form method="POST" action='/'>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select name = "value" class="form-control" id="exampleFormControlSelect1">
+                  <option value = "asc" >Price: Low to high</option>
+                  <option value = "desc">Price: High to Low</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Filter</button>
+
+            </form>
+              <div class="row pb-5 mb-4">
+                <% for(const product of user) { %>
+               <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                 <!-- Card-->
+                 <div class="card rounded shadow-sm border-0">
+                   <div class="card-body p-4"><img src="<%= product.image%>" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">
+                      <h5> <a href="./product" class="text-dark"><%= product.title%></a></h5>
+                      <p class="small text-muted font-italic"><%= product.price%></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <%}%>
-              </div>
-            </div>
-            </div>
+               <% } %>
+               </div>
+             </div>
 
 
 

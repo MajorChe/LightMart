@@ -38,37 +38,8 @@ const usersRoutes = require("./routes/users");
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(dbConnection));
 app.use("/", publicRoutes(dbConnection));
-app.use("/mypostings", usersRoutes(dbConnection));
 // Note: mount other resources here, using the same pattern above
 
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-
-app.get("/", (req, res) => {
-  res.render("index");
-  // render product template to visualize front end changes -- switch back to index after***
-});
-
-// app.get("/login", (req, res) => {
-//   res.render("login");
-// });
-
-// app.get("/myfavourites", (req, res) => {
-//   res.render("favourites");
-// });
-
-// app.get("/mypostings", (req, res) => {
-//   res.render("mypostings");
-// });
-
-app.get("/product", (req, res) => {
-  res.render("product");
-});
-
-app.get("/new", (req, res) => {
-  res.render("new");
-});
 
 
 app.listen(PORT, () => {

@@ -38,9 +38,16 @@ const markAsSold = (owner_id, id) => {
     })
   };
 
+const newProduct = function(title, price, description, image) {
+  return pool.query( `INSERT INTO products (title, owner_id, price, description, image, is_active, is_sold)
+  VALUES ($1, 1,  $2, $3, $4, TRUE, FALSE) RETURNING id;`, [title, price, description, image]
+  )
+}
+
 module.exports = {
   getUsersProducts,
   getUsersFavourites,
   deleteUsersProduct,
   markAsSold,
+  newProduct
 }
