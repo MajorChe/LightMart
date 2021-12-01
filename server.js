@@ -44,30 +44,16 @@ app.use("/", publicRoutes(dbConnection));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  res.render("index");
-  // render product template to visualize front end changes -- switch back to index after***
-});
-
-// app.get("/login", (req, res) => {
-//   res.render("login");
+// app.get("/", (req, res) => {
+//   res.render("index");
 // });
 
-app.get("/favourites", (req, res) => {
-  res.render("favourites");
-});
 
-app.get("/mypostings", (req, res) => {
-  res.render("mypostings");
-});
 
-app.get("/product", (req, res) => {
-  res.render("product");
-});
-
-app.get("/new", (req, res) => {
-  res.render("new");
-});
+// use this route to render products page
+app.get('/product', (req, res) => {
+  res.render('product');
+})
 
 
 app.listen(PORT, () => {

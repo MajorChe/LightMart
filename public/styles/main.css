@@ -1,1 +1,7 @@
+/* css file for index.ejs template */
 
+.filter-tag {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

@@ -1,18 +1,62 @@
+const { request } = require("express");
 const express = require("express");
 const router = express.Router();
 const userfn = require("../db/01_indexquery");
-const {getProduct} = require("../db/02_productquery");
+const getProductbyPrice = require("../db/02_productquery");
+const pool = require("../lib/db");
+
 
 
 module.exports = (db) => {
+
+
   router.get("/", (req, res) => {
     const session_id = req.session.id;
-    userfn.getUserbyid(session_id)
-    .then(user => {
-      const templateVars = {user}
-      res.render("index", templateVars);
+    getProductbyPrice.getProductLtH().then(user => {
+          const templateVars = { user }
+
+          res.render('index', templateVars);
+        })
+
+    // if no cookie exists - user is not logged in
+
+
     })
-  });
+
+
+
+
+router.post("/", (req, res) => {
+
+if(req.body.value === "asc") {
+  console.log("up we go")
+  getProductbyPrice.getProductLtH().then(user => {
+    const templateVars = { user }
+console.log(user)
+    res.render('index', templateVars);
+  })
+}
+if(req.body.value === "desc") {
+  console.log("down we go")
+  getProductbyPrice.getProductHtL().then(user => {
+    const templateVars = { user }
+
+    res.render('index', templateVars);
+  })
+
+
+
+ }
+})
+
+
+
+    // userfn.getUserbyid(session_id)
+    // .then(user => {
+    //   const templateVars = {user}
+    //   res.render("index", templateVars);
+    // })
+
 
   router.get("/login", (req, res) => {
     res.render("login");
@@ -39,17 +83,12 @@ module.exports = (db) => {
     res.redirect("/");
   });
 
-  // create post route for new product form
-  // product info taken from form gets added to db
-  router.post("/mypostings", (req, res) => {
 
-    const newProduct = `INSERT INTO products (title, owner_id, price, description, image, date_created, is_active, is_sold)
-    VALUES (${req.body.title}, ${req.body.price}, ${req.body.description}, ${req.body.image}, Now(), TRUE, FALSE);`
-
-    res.redirect('/mypostings/')
-  });
 
 
 
   return router;
 };
+
+
+
