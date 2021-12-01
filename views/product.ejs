@@ -19,7 +19,6 @@
 
   <!-- body HTML -->
   <body>
-    <%- include('partials/user_header') %>
 
     <!-- filter -->
     <div class="dropdown">
@@ -62,8 +61,11 @@
           <span><b>$</b>2500.00</span>
         </div>
 
-        <textarea placeholder="Hello.." class="contact-seller"></textarea>
-        <form action="" method="POST"><button type="submit" class="btn btn-outline-primary">Contact Seller</button></form>
+
+        <form target="_blank" action="#" method="POST">
+          <textarea placeholder="Hello.." class="contact-seller" name="message"></textarea>
+          <button type="submit" class="btn btn-outline-primary">Contact Seller</button>
+        </form>
       </div>
     </div>
   </main>

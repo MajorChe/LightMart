@@ -38,20 +38,16 @@ const markAsSold = (owner_id, id) => {
     })
   };
 
-  const addFavourite = (user_id, product_id) => {
-    console.log(user_id , product_id);
-    return pool.query('INSERT INTO favourites (user_id, product_id) VALUES ($1,$2);', [user_id, product_id])
-      .then((response) => {
-        return;
-      })
-      .catch(err => {
-        console.log(err.message)
-      })
-    };
+const newProduct = function(title, price, description, image) {
+  return pool.query( `INSERT INTO products (title, owner_id, price, description, image, is_active, is_sold)
+  VALUES ($1, 1,  $2, $3, $4, TRUE, FALSE) RETURNING id;`, [title, price, description, image]
+  )
+}
+
 module.exports = {
   getUsersProducts,
   getUsersFavourites,
   deleteUsersProduct,
   markAsSold,
-  addFavourite
+  newProduct
 }

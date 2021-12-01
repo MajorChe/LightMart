@@ -9,12 +9,40 @@ const getUser = (email) => {
     });
 };
 
+const getproducts = () => {
+  return pool
+    .query(`SELECT * FROM products WHERE is_active = TRUE;`)
+    .then((response) => {
+      return response.rows;
+    });
+};
+
 const getUserbyid = (id) => {
   return pool
-    .query(`SELECT users.id, users.name, users.email, products.image FROM users JOIN products ON owner_id = users.id WHERE users.id = $1`, [id])
+    .query(
+      `SELECT users.id, users.name, users.email, products.image FROM users JOIN products ON owner_id = users.id WHERE users.id = $1`,
+      [id]
+    )
     .then((response) => {
       return response.rows[0];
     });
 };
 
-module.exports = {getUser,getUserbyid}
+const getProductLowToHigh = () => {
+  return pool
+    .query(`SELECT * FROM products ORDER BY price;`)
+    .then((response) => {
+      return response.rows;
+    });
+};
+
+// define descending case
+const getProductHighToLow = () => {
+  return pool
+    .query(`SELECT * FROM products ORDER BY price DESC;`)
+    .then((response) => {
+      return response.rows;
+    });
+};
+
+module.exports = { getUser, getproducts , getUserbyid, getProductLowToHigh, getProductHighToLow};
