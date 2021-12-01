@@ -47,11 +47,9 @@ newProduct(title, price, image, description)
   res.redirect('/mypostings')
 });
 
-
-
-
-
-
+router.get("/product", (req, res) => {
+  res.render("product");
+})
 
 // returns router object
   return router;
