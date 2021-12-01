@@ -90,15 +90,11 @@ module.exports = (db) => {
   });
 
   router.post("/delete/:id", (req, res) => {
-    if (!req.session.id) {
-      res.redirect("/");
-    } else {
       productFns
         .deleteUsersProduct(req.session.id, req.params.id)
         .then((data) => {
           res.redirect(`/users/mypostings`);
         });
-    }
   });
 
   return router;

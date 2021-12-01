@@ -11,7 +11,7 @@ const getUser = (email) => {
 
 const getproducts = () => {
   return pool
-    .query(`SELECT * FROM products;`)
+    .query(`SELECT * FROM products WHERE is_active = TRUE;`)
     .then((response) => {
       return response.rows;
     });
