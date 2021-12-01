@@ -10,7 +10,7 @@ const getUsersProducts = (users_id) => {
 };
 
 const getUsersFavourites = (user_id) => {
-  return pool.query('SELECT title, price, description, image, date_created, users.name AS name FROM products JOIN favourites ON owner_id = products.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 GROUP BY favourites.user_id, products.id, users.name;', [user_id])
+  return pool.query('SELECT title, price, description, image, date_created, users.name AS name FROM products JOIN favourites ON product_id = products.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 GROUP BY favourites.user_id, products.id, users.name;', [user_id])
   .then((result) => result.rows)
     .catch(err => {
         console.log(err.message)
@@ -38,9 +38,20 @@ const markAsSold = (owner_id, id) => {
     })
   };
 
+  const addFavourite = (user_id, product_id) => {
+    console.log(user_id , product_id);
+    return pool.query('INSERT INTO favourites (user_id, product_id) VALUES ($1,$2);', [user_id, product_id])
+      .then((response) => {
+        return;
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+    };
 module.exports = {
   getUsersProducts,
   getUsersFavourites,
   deleteUsersProduct,
   markAsSold,
+  addFavourite
 }

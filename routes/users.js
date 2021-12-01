@@ -34,13 +34,12 @@ module.exports = (db) => {
     const user = req.session.id
     productFns.getUsersProducts(req.session.id)
       .then((data) => {
-        console.log("is",data)
         if(data.length === 0){
           postings.push(1);
         }
 
         for(let i of data){
-          if (i.is_sold === false) {
+          if (i.is_sold === false ) {
             postings.push(i)
 
           }
@@ -69,5 +68,12 @@ module.exports = (db) => {
       });
   });
 
+  router.post('/nice/:id', (req, res) => {
+    console.log(req.body)
+    // productFns.addFavourite(req.session.id, req.params.id)
+    //   .then((data) => {
+    //     res.redirect(`/users/myfavourites`);
+    //   });
+  });
   return router;
 };

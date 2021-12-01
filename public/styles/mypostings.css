@@ -1,0 +1,12 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+.card {
+width: 350px;
+}
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+ }

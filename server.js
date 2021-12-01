@@ -66,8 +66,8 @@ app.get("/product", (req, res) => {
   res.render("product");
 });
 
-app.get("/new", (req, res) => {
-  res.render("new");
+app.get("/fav", (req, res) => {
+  res.render("favB");
 });
 
 
