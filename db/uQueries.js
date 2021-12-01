@@ -44,10 +44,22 @@ const newProduct = function(title, price, description, image) {
   )
 }
 
+const addFavourite = (user_id, product_id) => {
+  console.log(user_id , product_id);
+  return pool.query('INSERT INTO favourites (user_id, product_id) VALUES ($1,$2);', [user_id, product_id])
+    .then((response) => {
+      return;
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+  };
+
 module.exports = {
   getUsersProducts,
   getUsersFavourites,
   deleteUsersProduct,
   markAsSold,
+  addFavourite,
   newProduct
 }

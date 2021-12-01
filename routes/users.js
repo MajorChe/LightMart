@@ -97,12 +97,12 @@ module.exports = (db) => {
         });
   });
 
-  router.post('/nice/:id', (req, res) => {
+  router.post('/add/:id', (req, res) => {
     console.log(req.body)
-    // productFns.addFavourite(req.session.id, req.params.id)
-    //   .then((data) => {
-    //     res.redirect(`/users/myfavourites`);
-    //   });
+    productFns.addFavourite(req.session.id, req.params.id)
+      .then((data) => {
+        res.redirect(`/users/myfavourites`);
+      });
   });
   return router;
 };
