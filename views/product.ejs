@@ -19,22 +19,7 @@
 
   <!-- body HTML -->
   <body>
-
-    <!-- filter -->
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-        Filter
-      </button>
-      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-        <li><a class="dropdown-item active" href="#">Price: high to low</a></li>
-        <li><a class="dropdown-item" href="#">Price: low to high</a></li>
-      </ul>
-    </div>
-
-
-
-
-
+    <%- include('partials/user_header')%>
   <main class="container">
     <section id="filter">
 
@@ -42,7 +27,7 @@
 
     <!-- Left Column-->
     <div class="left-column">
-      <img src="https://hkgwtdvfyh.medianetwork.cloud/unsafe/600x600/filters:format(webp)/www.arweave.net/Gl1-Jbv97H2AZp3TlD3P2ABxJN1g97tboYN3_ip3nfo/data.png" alt="DTP xmas sweater">
+      <img src="<%= product.image%>" alt="DTP xmas sweater" class="img-fluid" style="width: 600px; height: auto;">
     </div>
 
 
@@ -52,14 +37,14 @@
       <!-- NFT Description -->
       <div class="product-description">
         <span>#id</span>
-        <h1>NFT name</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus possimus commodi ducimus cupiditate aperiam ullam consequatur aliquid! Facere eligendi, perspiciatis sunt porro exercitationem vero molestias? Aspernatur inventore quia nam quas! </p>
+        <h1><%= product.title%></h1>
+        <p><%= product.description %></p>
       </div>
       <li class="list-inline-item m-0"><form method="POST" action=#><input type="submit" style="background-color:rgb(101, 7, 189);  border-radius: 25px; border-color:rgb(101, 7, 189); color:white" value="Favourite"></form>  </i></li>
       <!-- NFT Pricing -->
       <div class="product-price">
         <div class="price-and-favorite"></div>
-          <span><b>$</b>2500.00</span>
+          <span><b>$</b><%= product.price%></span>
         </div>
 
 
@@ -68,7 +53,6 @@
           <button type="submit" class="btn btn-outline-primary">Contact Seller</button>
         </form>
       </div>
-    </div>
   </main>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
