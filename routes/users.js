@@ -20,7 +20,6 @@ module.exports = (db) => {
       productFns.getUsersFavourites(req.session.id).then((data) => {
         let favourites = data;
         const user = req.session.id;
-        console.log(favourites)
         const templateVars = { favourites, user, session_id};
         res.render("favourites", templateVars);
       });
