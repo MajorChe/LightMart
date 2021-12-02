@@ -30,7 +30,7 @@ const getUserbyid = (id) => {
 
 const getProductLowToHigh = () => {
   return pool
-    .query(`SELECT * FROM products ORDER BY price;`)
+    .query(`SELECT * FROM products WHERE is_active = TRUE ORDER BY price;`)
     .then((response) => {
       return response.rows;
     });
@@ -39,7 +39,7 @@ const getProductLowToHigh = () => {
 // define descending case
 const getProductHighToLow = () => {
   return pool
-    .query(`SELECT * FROM products ORDER BY price DESC;`)
+    .query(`SELECT * FROM products WHERE is_active = TRUE ORDER BY price DESC;`)
     .then((response) => {
       return response.rows;
     });

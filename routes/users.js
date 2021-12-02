@@ -60,12 +60,11 @@ module.exports = (db) => {
     if (!req.session.id) {
       res.redirect("/");
     } else {
-    userfn.getUserbyid(req.session.id)
-    .then(user => {
-      const templateVars = {user, session_id}
-      res.render("new", templateVars);
-    })
-  }
+      userfn.getUserbyid(req.session.id).then((user) => {
+        const templateVars = { user, session_id };
+        res.render("new", templateVars);
+      });
+    }
   });
 
   router.post("/new", (req, res) => {
@@ -73,13 +72,25 @@ module.exports = (db) => {
     const price = req.body.price;
     const description = req.body.description;
     const image = req.body.image;
-    productFns.newProduct(title, price, description, image)
-    .then(res => {console.log(res)})
+    productFns.newProduct(title, price, description, image).then((res) => {
+      console.log(res);
+    });
     res.redirect("/users/mypostings");
-
   });
 
-  router.post("/:id", (req, res) => {
+  router.get("/:id", (req, res) => {
+    const session_id = req.session.id;
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+      productFns.getProductById(req.params.id).then((product) => {
+        const templateVars = { product, session_id };
+        res.render("product", templateVars);
+      });
+    }
+  });
+
+  router.post("/product/:id", (req, res) => {
     if (!req.session.id) {
       res.redirect("/");
     } else {
@@ -90,18 +101,10 @@ module.exports = (db) => {
   });
 
   router.post("/delete/:id", (req, res) => {
-      productFns
-        .deleteUsersProduct(req.session.id, req.params.id)
-        .then((data) => {
-          res.redirect(`/users/mypostings`);
-        });
-  });
-
-  router.post('/add/:id', (req, res) => {
-    console.log(req.body)
-    productFns.addFavourite(req.session.id, req.params.id)
+    productFns
+      .deleteUsersProduct(req.session.id, req.params.id)
       .then((data) => {
-        res.redirect(`/users/myfavourites`);
+        res.redirect(`/users/mypostings`);
       });
   });
 
@@ -150,5 +153,11 @@ module.exports = (db) => {
 
   });
 
+  router.post("/add/:id", (req, res) => {
+    console.log(req.body);
+    productFns.addFavourite(req.session.id, req.params.id).then((data) => {
+      res.redirect(`/users/myfavourites`);
+    });
+  });
   return router;
 };
