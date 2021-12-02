@@ -9,6 +9,7 @@ const express = require("express");
 const router = express.Router();
 const productFns = require("../db/uQueries");
 const userfn = require("../db/01_indexquery");
+const timeago = require('timeago.js')
 
 module.exports = (db) => {
   router.get("/myfavourites", (req, res) => {
@@ -19,7 +20,8 @@ module.exports = (db) => {
       productFns.getUsersFavourites(req.session.id).then((data) => {
         let favourites = data;
         const user = req.session.id;
-        const templateVars = { favourites, user, session_id };
+        console.log(favourites)
+        const templateVars = { favourites, user, session_id};
         res.render("favourites", templateVars);
       });
     }

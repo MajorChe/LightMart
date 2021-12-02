@@ -28,7 +28,7 @@
               <div class="card rounded shadow-sm">
                 <div class="card-body p-4"><img src=<%= details.image%> alt="" class="img-fluid d-block mx-auto mb-3">
                   <h5> <a href="/users/<%= details.id %>" class="text-dark"><%= details.title %></a></h5>
-                  <p class="small text-muted font-italic">$<%= details.price%></p>
+                  <p class="small" style="font-size: x-large; color: #08213d;"><b>$<%= details.price%></b></p>
                   <ul class="list-inline small">
                     <li class="list-inline-item m-0">   <form method="POST" action="/users/product/<%= details.id%>" > <input type="submit" style="background-color:#0000ff; border-radius: 25px; border-color: #0000ff;; color:white" value="Mark Sold"></form></i></li>
                     <li class="list-inline-item m-0"> <form method="POST" action="/users/delete/<%= details.id%>" > <input type="submit" style="background-color:rgb(189, 7, 7);  border-radius: 25px; border-color:rgb(189, 7, 7); color:white" value="Delete"></form>  </i></li>

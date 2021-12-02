@@ -18,7 +18,7 @@ const getProductById = (product_id) => {
 }
 
 const getUsersFavourites = (user_id) => {
-  return pool.query('SELECT products.id, title, price, description, image, date_created, users.name AS name FROM products JOIN favourites ON product_id = products.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 GROUP BY favourites.user_id, products.id, users.name;', [user_id])
+  return pool.query(`SELECT products.id, title, price, description, image, TO_CHAR(date_created :: DATE, 'Mon dd, yyyy') AS date_created, users.name AS name FROM products JOIN favourites ON product_id = products.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 GROUP BY favourites.user_id, products.id, users.name;`, [user_id])
   .then((result) => result.rows)
     .catch(err => {
         console.log(err.message)

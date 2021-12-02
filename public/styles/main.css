@@ -16,3 +16,26 @@
 .text-center, .py-4 {
   font-family: 'Poppins';
 }
+
+
+.headform {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headform form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headform form button {
+  height: 40px;
+  width: 150px;
+  margin-left: 15px;
+}
+
+.card img {
+  width: 207px;
+  height: 207px;
+}

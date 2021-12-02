@@ -38,17 +38,17 @@
 
 
    <div class="container mt-5" id="about">
+     <div class="headform">
       <h1 class="text-center py-4">Featured NFT's </h1>
       <form method="POST" action='/'>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
         <select name = "value" class="form-control" id="exampleFormControlSelect1">
         <option value = "asc" >Price: Low to high</option>
         <option value = "desc">Price: High to Low</option>
         </select>
-      </div>
       <button type="submit" class="btn btn-primary">Filter</button>
       </form>
+     </div>
+
       <div class="row pb-5 mb-4">
         <% for(const product of user) { %>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
@@ -56,7 +56,7 @@
           <div class="card rounded shadow-sm border-0">
             <div class="card-body p-4"><img src="<%= product.image%>" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">
               <h5> <a href="/users/<%= product.id%>" class="text-dark"><%= product.title%></a></h5>
-              <p class="small text-muted font-italic" style="font-size: x-large;"><b>$<%= product.price%></b></p>
+              <p class="small" style="font-size: x-large;color: #08213d;"><b>$<%= product.price%></b></p>
               <li class="list-inline-item m-0"><form method="POST" action="/users/add/<%= product.id %>"> <input type="submit" style="background-color:rgb(101, 7, 189);  border-radius: 25px; border-color:rgb(101, 7, 189); color:white" value="Favourite"></form>  </i></li>
             </div>
           </div>

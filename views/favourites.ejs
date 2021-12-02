@@ -29,8 +29,6 @@
         <!-- First Row [Products]-->
 
         <h2 class="font-weight-bold mb-2">Favourites</h2>
-
-
         <div class="row pb-5 mb-4">
           <% for (let details of favourites) { %>
             <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
@@ -38,10 +36,10 @@
               <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-4"><img src= <%= details.image %> alt="" class="img-fluid d-block mx-auto mb-3">
                   <h5> <a href="/users/<%= details.id%>" class="text-dark"> <%= details.title%> </a></h5>
-                  <p class="small text-muted font-italic"> $<%= details.price%></p>
+                  <p class="small" style="font-size: x-large;"><b> $<%= details.price%></b></p>
 
                   <ul class="list-inline small">
-                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i> <%= details.date_created %></li>
+                    <li class="list-inline-item m-0" style="font-size: 17px;"><i class="fa fa-star text-success" style="font-size: x-large;"></i> Created: <%= details.date_created %></li>
                   </ul>
                 </div>
               </div>
