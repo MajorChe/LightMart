@@ -14,7 +14,7 @@ Unfortunately, despite all of the coverage on the topic, the learning curve for 
 
 To solve this problem, we have developed - lightmart - a buy & sell marketplace specializing in NFTs. 
 
-Lightmart's user-friendly interface takes away the learning curve associated with purchasing NFTs and allows the average user to easily purchase NFTs online. 
+Lightmart's user-friendly interface takes away the learning curve associated with purchasing NFTs and allows the average user to enter the market. 
 
 ***
 
@@ -49,13 +49,12 @@ Lightmart's user-friendly interface takes away the learning curve associated wit
   - username: `labber` 
   - password: `labber` 
   - database: `midterm`
-3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Reset database: `npm run db:reset`
+3. Fix to binaries for sass: `npm rebuild node-sass`
+4. Reset database: `npm run db:reset`
   - Check the db folder to see what gets created and seeded in the SDB
-6. Install dependencies: `npm i`
-7. Run the server: `npm run local`
-8. Visit `http://localhost:8080/`
+5. Install dependencies: `npm i`
+6. Run the server: `npm run local`
+7. Visit `http://localhost:8080/`
 
 ***
 
