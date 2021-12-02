@@ -38,8 +38,9 @@ const usersRoutes = require("./routes/users");
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(dbConnection));
 app.use("/", publicRoutes(dbConnection));
-// Note: mount other resources here, using the same pattern above
+//app.use("/myfavourites", usersRoutes(dbConnection));
 
+// Note: mount other resources here, using the same pattern above
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

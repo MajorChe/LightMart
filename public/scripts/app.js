@@ -1,5 +1,6 @@
 // Client facing scripts here
 
+<<<<<<< HEAD
 const { response } = require('express');
 const getProduct = require('../db/02_productquery.js');
 
@@ -56,3 +57,19 @@ displayProducts(products);
 
 
 
+=======
+
+
+$(document).ready(function() {
+  //set initial state.
+  $('#textbox1').val($(this).is(':checked'));
+
+  $('#checkbox1').change(function() {
+      if($(this).is(":checked")) {
+          var returnVal = confirm("Are you sure?");
+          $(this).attr("checked", returnVal);
+      }
+      $('#textbox1').val($(this).is(':checked'));
+  });
+});
+>>>>>>> 7fbd4d45240dec42afd491c2db392aacc5bb5cf7

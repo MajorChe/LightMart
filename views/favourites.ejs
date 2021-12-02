@@ -24,7 +24,7 @@
 
     </head>
     <body>
-      <%- include('partials/user_header', {user}) %>
+      <%- include('partials/user_header') %>
       <div class="container py-5">
         <!-- For Demo Purpose-->
           <h1 class="display-4 font-weight-bold">My Favourites</h1>
@@ -32,7 +32,7 @@
 
         <!-- First Row [Prosucts]-->
 
-        <h2 class="font-weight-bold mb-2"><%= favourites[0].name%>'s Favourites</h2>
+        <h2 class="font-weight-bold mb-2">Favourites</h2>
 
 
         <div class="row pb-5 mb-4">
@@ -41,7 +41,7 @@
               <!-- Card-->
               <div class="card rounded shadow-sm border-0">
                 <div class="card-body p-4"><img src= <%= details.image %> alt="" class="img-fluid d-block mx-auto mb-3">
-                  <h5> <a href="#" class="text-dark"> <%= details.title%> </a></h5>
+                  <h5> <a href="/users/<%= details.id%>" class="text-dark"> <%= details.title%> </a></h5>
                   <p class="small text-muted font-italic"> $<%= details.price%></p>
 
                   <ul class="list-inline small">

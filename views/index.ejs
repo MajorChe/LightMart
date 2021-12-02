@@ -104,8 +104,9 @@
                  <!-- Card-->
                  <div class="card rounded shadow-sm border-0">
                    <div class="card-body p-4"><img src="<%= product.image%>" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">
-                      <h5> <a href="./product" class="text-dark"><%= product.title%></a></h5>
-                      <p class="small text-muted font-italic"><%= product.price%></p>
+                      <h5> <a href="/users/<%= product.id%>" class="text-dark"><%= product.title%></a></h5>
+                      <p class="small text-muted font-italic" style="font-size: x-large;"><b>$<%= product.price%></b></p>
+                      <li class="list-inline-item m-0"><form method="POST" action="/users/add/<%= product.id %>"> <input type="submit" style="background-color:rgb(101, 7, 189);  border-radius: 25px; border-color:rgb(101, 7, 189); color:white" value="Favourite"></form>  </i></li>
                     </div>
                   </div>
                 </div>

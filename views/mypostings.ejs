@@ -9,6 +9,7 @@
     <!-- <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" /> -->
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/mypostings.css" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -32,11 +33,12 @@
 
 
         <!-- First Row [Prosucts]-->
+        <div id = listings>
         <h1 class="display-4 font-weight-bold" text-align="center">My Postings</h1>
         <h2 class="font-weight-bold mb-2">Active Postings</h2>
 
 
-          <div class="row pb-5 mb-4">
+          <div class="row pb-5 mb-1 no-gutters">
 
           <% for (let details of postings) {%>
             <% if (details === 1) { %>
@@ -53,38 +55,43 @@
 
 
     <% }else { %>
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+      <div class="col-md-6 mb-4 mb-lg-0 ">
         <div class="card rounded shadow-sm border-0">
           <div class="card-body p-4"><img src=<%= details.image%> alt="" class="img-fluid d-block mx-auto mb-3">
-            <h5> <a href="./product" class="text-dark"><%= details.title%></a></h5>
+            <h5> <a href="/users/<%= details.id %>" class="text-dark"><%= details.title %></a></h5>
             <p class="small text-muted font-italic">$<%= details.price%></p>
             <ul class="list-inline small">
-              <li class="list-inline-item m-0">   <form method="POST" action="/users/<%= details.id%>" > <input type="submit" style="background-color:#0000ff; border-radius: 25px; border-color: #0000ff;; color:white" value="Mark Sold"></form></i></li>
+              <li class="list-inline-item m-0">   <form method="POST" action="/users/product/<%= details.id%>" > <input type="submit" style="background-color:#0000ff; border-radius: 25px; border-color: #0000ff;; color:white" value="Mark Sold"></form></i></li>
               <li class="list-inline-item m-0"> <form method="POST" action="/users/delete/<%= details.id%>" > <input type="submit" style="background-color:rgb(189, 7, 7);  border-radius: 25px; border-color:rgb(189, 7, 7); color:white" value="Delete"></form>  </i></li>
             </ul>
           </div>
         </div>
       </div>
     <% }}; %>
+    <hr>
 
+  </div>
+    <div class=”container”>
+         <h2 class="font-weight-bold mb-2">Recently Sold Items</h2>
+    <div class="row ">
 
-    <h2 class="font-weight-bold mb-2">Recently Sold Items</h2>
-    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0"></div>
 
     <% for (let details of sold) { %>
       <div class="card rounded shadow-sm border-0">
         <div class="card-body p-4"><img src=<%= details.image%> alt=""  class="img-fluid d-block mx-auto mb-3">
-          <h5> <a href="./product" class="text-dark"><%= details.title%></a></h5>
+          <h5> <a href="/users/<%= details.id %>" class="text-dark"><%= details.title%></a></h5>
           <p class="small text-muted font-italic">$<%= details.price%></p>
           <ul class="list-inline small">
             <li class="list-inline-item m-0"> <input type="submit" style="background-color:#0000ff; border-radius: 25px; border-color: #0000ff;; color:white" value="SOLD!"></form></i></li>
-            <li class="list-inline-item m-0"><form method="POST" action=#><input type="submit" style="background-color:rgb(189, 7, 7);  border-radius: 25px; border-color:rgb(189, 7, 7); color:white" value="Clear"></form>  </i></li>
+            <li class="list-inline-item m-0"><form method="POST" action=/mypostings/<%= details.id%>><input type="submit" style="background-color:rgb(189, 7, 7);  border-radius: 25px; border-color:rgb(189, 7, 7); color:white" value="Clear"></form>  </i></li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0"></div>
+
+
           <% } %>
+        </div>
+      </div>
 
 
 
