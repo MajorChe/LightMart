@@ -1,7 +1,5 @@
 // Client facing scripts here
 
-
-
 $(document).ready(function() {
   //set initial state.
   $('#textbox1').val($(this).is(':checked'));
