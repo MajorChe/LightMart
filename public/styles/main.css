@@ -1,1 +1,18 @@
+.display-4, .font-weight-bold {
+  font-family: 'Poppins';
+}
 
+/* change font family for footer text - targets all text elements in footer */
+.col-12, .col-md-3 {
+  font-family: 'Poppins';
+}
+
+.jumbotron {
+  /* background-image: url('../../docs/nft-bg.png'); */
+  background-size: cover;
+  height: 100%;
+}
+
+.text-center, .py-4 {
+  font-family: 'Poppins';
+}

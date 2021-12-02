@@ -16,4 +16,12 @@ margin: 10px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+  font-family: 'Poppins';
  }
+ .active-postings-font{
+  font-weight: 200;
+}
+
+.recently-sold-font {
+ font-weight: 200;
+}
