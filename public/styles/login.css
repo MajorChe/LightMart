@@ -23,7 +23,7 @@ a {
   left: 0;
   margin: auto;
   height: 400px;
-  background-color: rgba(236, 48, 20, 0.9);
+  background-color: #e9ecef;
 }
 .white-panel {
   background-color: white;
@@ -39,10 +39,6 @@ a {
 .login-reg-panel input[type=radio] {
   position: relative;
   display: none;
-}
-.login-reg-panel {
-  background-color: #87AAAA;
-
 }
 .login-reg-panel #label-login,
 .login-reg-panel #label-register {
