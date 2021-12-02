@@ -6,8 +6,10 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     const session_id = req.session.id;
     userfn.getproducts().then((user) => {
-      const templateVars = { user , session_id};
-      res.render("index", templateVars);
+      userfn.getUserbyid(session_id).then(result => {
+        const templateVars = { user , session_id, result};
+        res.render("index", templateVars);
+      })
     });
   });
 
@@ -16,16 +18,19 @@ module.exports = (db) => {
     if (req.body.value === "asc") {
       console.log("up we go");
       userfn.getProductLowToHigh().then((user) => {
-        const templateVars = { user,session_id };
-        res.render("index", templateVars);
+        userfn.getUserbyid(session_id).then(result => {
+          const templateVars = { user,session_id, result };
+          res.render("index", templateVars);
+        })
       });
     }
     if (req.body.value === "desc") {
       console.log("down we go");
       userfn.getProductHighToLow().then((user) => {
-        const templateVars = { user, session_id };
-
-        res.render("index", templateVars);
+        userfn.getUserbyid(session_id).then(result => {
+          const templateVars = { user, session_id, result };
+          res.render("index", templateVars);
+        })
       });
     }
   });
