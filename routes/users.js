@@ -78,17 +78,6 @@ module.exports = (db) => {
     res.redirect("/users/mypostings");
   });
 
-  router.get("/:id", (req, res) => {
-    const session_id = req.session.id;
-    if (!req.session.id) {
-      res.redirect("/");
-    } else {
-      productFns.getProductById(req.params.id).then((product) => {
-        const templateVars = { product, session_id };
-        res.render("product", templateVars);
-      });
-    }
-  });
 
   router.post("/product/:id", (req, res) => {
     if (!req.session.id) {
@@ -109,6 +98,7 @@ module.exports = (db) => {
   });
 
   router.get("/inbox", (req, res) => {
+    console.log('id:', req.session.id)
     if (!req.session.id) {
       res.redirect("/");
     } else {
@@ -116,11 +106,14 @@ module.exports = (db) => {
       .then((data) => {
         const session_id = req.session.id;
         const messages = data.reverse();
-        const templateVars = { messages, session_id  };
+        const templateVars = { messages, session_id };
         res.render('inbox', templateVars );
       });
     }
   });
+
+
+
   router.get("/message/:id", (req, res) => {
     const session_id = req.session.id;
     if (!req.session.id) {
@@ -179,6 +172,18 @@ module.exports = (db) => {
     productFns.addFavourite(req.session.id, req.params.id).then((data) => {
       res.redirect(`/users/myfavourites`);
     });
+  });
+
+  router.get("/:id", (req, res) => {
+    const session_id = req.session.id;
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+      productFns.getProductById(req.params.id).then((product) => {
+        const templateVars = { product, session_id };
+        res.render("product", templateVars);
+      });
+    }
   });
   return router;
 };
