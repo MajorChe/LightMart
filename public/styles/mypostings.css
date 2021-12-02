@@ -1,12 +1,24 @@
 body {
   display: flex;
   flex-direction: column;
+
 }
 .card {
 width: 350px;
 }
+
 .container {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+  font-family: 'Poppins'
+  ;
  }
+
+ .active-postings-font{
+   font-weight: 200;
+ }
+
+.recently-sold-font {
+  font-weight: 200;
+}

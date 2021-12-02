@@ -1,6 +1,10 @@
 <header id="header">
   <nav class="navbar navbar-expand-lg navbar-static-top">
     <a class="navbar-brand" href="/">lightMart</a>
+    <!-- lightmart logo - located in docs -->
+    <!-- <img id="logo" type="image/png" src="../../docs/lightmart_logo.png" /> -->
+
+
 
     <% if (!session_id) { %>
       <div class="login-register">
@@ -25,7 +29,7 @@
         </li>
       </ul>
       <form class="form-inline" method="post" action="/logout">
-        <a href="#"><button class="btn btn-outline-dark my-2 my-sm-0" style="margin-right: 10px" type="button">Search</button></a>
+        <!-- <a href="#"><button class="btn btn-outline-dark my-2 my-sm-0" style="margin-right: 10px" type="button">Search</button></a> -->
         <a href="/logout"><button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Logout</button></a>
       </form>
     </div>

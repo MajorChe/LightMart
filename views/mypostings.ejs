@@ -19,6 +19,8 @@
         src="https://kit.fontawesome.com/115a5a2ad4.js"
         crossorigin="anonymous"
       ></script>
+      <!-- poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;600;700&display=swap" rel="stylesheet">
   </head>
     <body>
       <%- include('partials/user_header', {user}) %>
@@ -35,7 +37,7 @@
         <!-- First Row [Prosucts]-->
         <div id = listings>
         <h1 class="display-4 font-weight-bold" text-align="center">My Postings</h1>
-        <h2 class="font-weight-bold mb-2">Active Postings</h2>
+        <h2 class="active-postings-font">Active Postings</h2>
 
 
           <div class="row pb-5 mb-1 no-gutters">
@@ -44,12 +46,12 @@
             <% if (details === 1) { %>
               <div class="card">
                 <div class="card-header">
-                You currently have no active posting
+                You currently have no active postings
                 </div>
                 <div class="card-body">
                 <h5 class="card-title">Want to post?</h5>
-                <p class="card-text">If you have an nft you would like to post, click below to create a new posting.</p>
-                <a href="#" class="btn btn-primary">Create a posting</a>
+                <p class="card-text">If you have an nft you would like to sell, click below to create a new posting.</p>
+                <a href="../users/new" class="btn btn-primary">Create a posting</a>
                 </div>
                 </div>
 
@@ -72,7 +74,7 @@
 
   </div>
     <div class=”container”>
-         <h2 class="font-weight-bold mb-2">Recently Sold Items</h2>
+         <h2 class="recenty-sold-font">Recently Sold Items</h2>
     <div class="row ">
 
 
