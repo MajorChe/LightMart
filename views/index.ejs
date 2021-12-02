@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-
-  <!-- <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" /> -->
-  <!-- <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" /> -->
+  <title>Buy and Sell NFT</title>
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" rel="stylesheet" type="text/css">
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -21,166 +22,52 @@
 <body>
   <%- include('partials/user_header') %>
 
-  <title>Home</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" rel="stylesheet" type="text/css">
-
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-</head>
-<body>
-<!-- navbar starts -->
-
-<!-- nav bar ends -->
-
-<div class="jumbotron ">
-<div class="jumbotron-overlay ">
-<div class="container jumbotron-padding  text-center">
-  <% if (result) { %>
-<!-- <h1 class="display-4">Welcome to the future <%= user.name%></h1> -->
-<h1 class="display-4">Welcome to the future <%= result.name%></h1>
-  <% } else { %>
-  <h1 class="display-4">Welcome to the future</h1>
-  <% } %>
-<p >You have entered the new world of NFTs</p>
-   <p>
-      <a href="https://www.theverge.com/22310188/nft-explainer-what-is-blockchain-crypto-art-faq" class="btn btn-lg btn-success btn-circle my-4 mr-3">Learn More</a>
-   </p>
-</div>
-</div>
-</div>
+  <div class="jumbotron ">
+    <div class="jumbotron-overlay ">
+      <div class="container jumbotron-padding  text-center">
+        <% if (result) { %>
+          <h1 class="display-4">Welcome to the future <%= result.name%></h1>
+        <% } else { %>
+          <h1 class="display-4">Welcome to the future</h1>
+        <% } %>
+        <p >You have entered the new world of NFTs</p>
+   <p><a href="https://www.theverge.com/22310188/nft-explainer-what-is-blockchain-crypto-art-faq" class="btn btn-lg btn-success btn-circle my-4 mr-3">Learn More</a></p>
+      </div>
+    </div>
+  </div>
 
 
    <div class="container mt-5" id="about">
-             <h1 class="text-center py-4">Featured NFT's </h1>
-             <form method="POST" action='/'>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select name = "value" class="form-control" id="exampleFormControlSelect1">
-                  <option value = "asc" >Price: Low to high</option>
-                  <option value = "desc">Price: High to Low</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Filter</button>
-
-            </form>
-              <div class="row pb-5 mb-4">
-                <% for(const product of user) { %>
-               <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                 <!-- Card-->
-                 <div class="card rounded shadow-sm border-0">
-                   <div class="card-body p-4"><img src="<%= product.image%>" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">
-                      <h5> <a href="/users/<%= product.id%>" class="text-dark"><%= product.title%></a></h5>
-                      <p class="small text-muted font-italic" style="font-size: x-large;"><b>$<%= product.price%></b></p>
-                      <li class="list-inline-item m-0"><form method="POST" action="/users/add/<%= product.id %>"> <input type="submit" style="background-color:rgb(101, 7, 189);  border-radius: 25px; border-color:rgb(101, 7, 189); color:white" value="Favourite"></form>  </i></li>
-                    </div>
-                  </div>
-                </div>
-               <% } %>
-               </div>
-             </div>
-
-
-
-<!-- blog post end -->
-<!-- footer start -->
-<footer class="bg-dark text-light py-5 mt-5">
-          <div class="container">
-              <div class="row">
-                  <div class="col-12 col-md-3">
-                      <h3>LightMart</h3>
-                      <small class="d-block text-muted">© 2018-2019</small>
-                      <small class="text-muted">All Rights Reserved.</small>
-                  </div>
-                  <!--end of col-->
-                  <div class="col-12 col-md-9">
-
-                      <div class="row no-gutters">
-                          <div class="col-6 col-lg-3">
-                               <h5>Features</h5>
-                              <ul class="list-unstyled">
-                                  <li>
-                                      <a href="#" class="text-muted">Ready to ship</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">Light weight</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted"> Responsive</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">Inner Pages</a>
-                                  </li>
-                              </ul>
-                          </div>
-                          <!--end of col-->
-                          <div class="col-6 col-lg-3">
-                              <h5>Resources</h5>
-                              <ul class="list-unstyled">
-                                  <li>
-                                      <a href="#" class="text-muted">Angular</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">JavaScript</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">React</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">Postman</a>
-                                  </li>
-                              </ul>
-                          </div>
-                          <!--end of col-->
-                          <div class="col-6 col-lg-3">
-                               <h5>Help</h5>
-                              <ul class="list-unstyled">
-                                  <li>
-                                      <a href="#" class="text-muted">Forum</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">FAQ</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">Projects</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">Site map</a>
-                                  </li>
-                              </ul>
-                          </div>
-                          <!--end of col-->
-                          <div class="col-6 col-lg-3">
-                              <h5>About</h5>
-                              <ul class="list-unstyled">
-                                  <li>
-                                      <a href="#" class="text-muted">Team</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">Careers</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">Terms</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="text-muted">Investment</a>
-                                  </li>
-                              </ul>
-                          </div>
-                          <!--end of col-->
-                      </div>
-                      <!--end of row-->
-                  </div>
-                  <!--end of col-->
-              </div>
-              <!--end of row-->
+      <h1 class="text-center py-4">Featured NFT's </h1>
+      <form method="POST" action='/'>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select name = "value" class="form-control" id="exampleFormControlSelect1">
+        <option value = "asc" >Price: Low to high</option>
+        <option value = "desc">Price: High to Low</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Filter</button>
+      </form>
+      <div class="row pb-5 mb-4">
+        <% for(const product of user) { %>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <!-- Card-->
+          <div class="card rounded shadow-sm border-0">
+            <div class="card-body p-4"><img src="<%= product.image%>" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">
+              <h5> <a href="/users/<%= product.id%>" class="text-dark"><%= product.title%></a></h5>
+              <p class="small text-muted font-italic" style="font-size: x-large;"><b>$<%= product.price%></b></p>
+              <li class="list-inline-item m-0"><form method="POST" action="/users/add/<%= product.id %>"> <input type="submit" style="background-color:rgb(101, 7, 189);  border-radius: 25px; border-color:rgb(101, 7, 189); color:white" value="Favourite"></form>  </i></li>
+            </div>
           </div>
-          <!--end of container-->
-      </footer>
-<!-- footer end -->
+        </div>
+        <% } %>
+      </div>
+  </div>
+
+<!-- footer -->
+<%- include('partials/_footer')%>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
