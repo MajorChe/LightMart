@@ -104,5 +104,51 @@ module.exports = (db) => {
         res.redirect(`/users/myfavourites`);
       });
   });
+
+  router.get("/inbox", (req, res) => {
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+      productFns.getAllConversations(req.session.id)
+      .then((data) => {
+        const session_id = req.session.id;
+        const messages = data.reverse();
+        const templateVars = { messages, session_id  };
+        res.render('inbox', templateVars );
+      });
+    }
+  });
+  router.get("/message/:id", (req, res) => {
+
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+
+      productFns.getUserMessages(req.params.id)
+      .then((data) => {
+        console.log(data)
+        const session_id = req.session.id;
+        const messages = data;
+        const templateVars = { messages, session_id };
+        res.render('message', templateVars );
+      });
+    }
+  });
+
+
+
+  router.post("/reply/:id", (req, res) => {
+    const sender_id = req.session.id
+    const conversation_id = req.params.id
+    const message = req.body.message
+    let chatID = req.params.id;
+      productFns.addMessage(conversation_id, sender_id , message)
+      .then((data) => {
+        console.log('params:',req.params, 'req.body:', req.body, 'session:', req.session.id)
+        res.redirect(`/users/message/${chatID}`);
+      });
+
+  });
+
   return router;
 };

@@ -45,7 +45,6 @@ const newProduct = function(title, price, description, image) {
 }
 
 const addFavourite = (user_id, product_id) => {
-  console.log(user_id , product_id);
   return pool.query('INSERT INTO favourites (user_id, product_id) VALUES ($1,$2);', [user_id, product_id])
     .then((response) => {
       return;
@@ -54,12 +53,45 @@ const addFavourite = (user_id, product_id) => {
       console.log(err.message)
     })
   };
+  const addMessage = (conversation_id, sender_id , message) => {
+    return pool.query('INSERT INTO messages (conversation_id, sender_id  , message) VALUES ($1,$2,$3);', [conversation_id, sender_id  , message])
+      .then((response) => {
+        return;
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+    };
 
+    const getAllConversations = (user_id) => {
+      return pool.query(
+        'SELECT conversations.* , products.title as product, conversations.buyer_id as buyer, products.owner_id as seller, users.name as buyer_name  FROM conversations JOIN products ON conversations.product_id = products.id JOIN users on conversations.buyer_id= users.id WHERE conversations.buyer_id = $1 OR products.owner_id = $1 ;', [user_id])
+        .then((response) => {
+          return response.rows;
+        })
+        .catch(err => {
+          console.log(err.message)
+        })
+      };
+
+  const getUserMessages = (chat_id) => {
+    return pool.query(
+      'SELECT * from messages WHERE conversation_id = $1', [chat_id])
+      .then((response) => {
+        return response.rows;
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+    };
 module.exports = {
   getUsersProducts,
   getUsersFavourites,
   deleteUsersProduct,
   markAsSold,
   addFavourite,
-  newProduct
+  newProduct,
+  addMessage,
+  getAllConversations,
+  getUserMessages
 }
