@@ -71,6 +71,17 @@ const addFavourite = (user_id, product_id) => {
       })
     };
 
+    const newConversation = (buyer_id, product_id) => {
+      return pool.query('INSERT INTO conversations (buyer_id, product_id) VALUES ($1,$2) RETURNING *;', [buyer_id, product_id])
+        .then((response) => {
+          return response.rows
+        })
+        .catch(err => {
+          console.log(err.message)
+        })
+      };
+
+
     const getAllConversations = (user_id) => {
       return pool.query(
         'SELECT conversations.* , products.title as product, conversations.buyer_id as buyer, products.owner_id as seller, users.name as buyer_name  FROM conversations JOIN products ON conversations.product_id = products.id JOIN users on conversations.buyer_id= users.id WHERE conversations.buyer_id = $1 OR products.owner_id = $1 ;', [user_id])
@@ -101,5 +112,7 @@ module.exports = {
   newProduct,
   getAllConversations,
   getUserMessages,
-  getProductById
+  getProductById,
+  addMessage,
+  newConversation
 }

@@ -21,7 +21,7 @@
       ></script>
   </head>
     <body>
-          <%- include('partials/user_header', {session_id}) %>
+      <%- include('partials/user_header', {session_id}) %>
       <div class="container py-5">
 
 
@@ -31,20 +31,18 @@
 
         <div id = listings>
         <h1 class="display-4 font-weight-bold" >Conversation</h1>
-        <form method="POST" action='/users/reply/<%=messages[0].conversation_id%>'>
-
-        <% for (let details of messages) {%>
+        <form method="POST" action='/users/reply/<%=conversation_id%>'>
 
 
 
             <div class="card" style="width: 100%;">
               <div class="card-body">
-                  <p class="card-text"><%=details.message %></p>
+
               </div>
           </div>
 
 
-    <%  } %>
+    
 
     <div class="sendMessageContainer">
       <div class="sendContentContainer">

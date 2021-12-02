@@ -122,18 +122,26 @@ module.exports = (db) => {
     }
   });
   router.get("/message/:id", (req, res) => {
-
+    const session_id = req.session.id;
     if (!req.session.id) {
       res.redirect("/");
-    } else {
-
-      productFns.getUserMessages(req.params.id)
+    } else  {
+       productFns.getUserMessages(req.params.id)
       .then((data) => {
-        console.log(data)
+        console.log(data.length)
+        if(data.length === 0){
+          const conversation_id = req.params.id
+          console.log(conversation_id)
+          const templateVars = {  session_id, conversation_id }
+
+          res.render('blankMessage', templateVars )
+        } else {
+
         const session_id = req.session.id;
         const messages = data;
         const templateVars = { messages, session_id };
         res.render('message', templateVars );
+      }
       });
     }
   });
@@ -153,8 +161,21 @@ module.exports = (db) => {
 
   });
 
+  router.post("/contact/:id", (req, res) => {
+    const buyer_id = req.session.id
+    const product_id = req.params.id
+      productFns.newConversation(buyer_id, product_id)
+      .then((data) => {
+        console.log(data)
+        let chatID = data[0].id
+        res.redirect(`/users/message/${chatID}`);
+      });
+
+  });
+
+
+
   router.post("/add/:id", (req, res) => {
-    console.log(req.body);
     productFns.addFavourite(req.session.id, req.params.id).then((data) => {
       res.redirect(`/users/myfavourites`);
     });

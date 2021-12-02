@@ -47,11 +47,13 @@
           <span><b>$</b><%= product.price%></span>
         </div>
 
-        <iframe name="hiddenFrame" class="d-none"></iframe>
-        <form target="hiddenFrame" action="https://formsubmit.co/charitnanduri@gmail.com" method="POST">
+        <!-- <iframe name="hiddenFrame" class="d-none"></iframe>
+        <!-- <form target="hiddenFrame" action="https://formsubmit.co/charitnanduri@gmail.com" method="POST">
           <input type="hidden" name="_cc" value="charithnanduri03@gmail.com">
-          <input type="hidden" name="_captcha" value="false">
-          <textarea placeholder="Hello.." class="contact-seller" name="message"></textarea>
+          <input type="hidden" name="_captcha" value="false"> -->
+          <!-- <textarea placeholder="Hello.." class="contact-seller" name="message"></textarea> --> 
+          <form method = "POST" action= "/users/contact/<%= product.id %>"  >
+
           <button type="submit" class="btn btn-outline-primary btn-lg">Contact Seller</button>
         </form>
       </div>
