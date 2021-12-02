@@ -68,6 +68,20 @@ module.exports = (db) => {
   }
   });
 
+  // router.get("/product", (req, res) => {
+  //   const session_id = req.session.id;
+
+  //   if(!req.session.id) {
+  //     res.redirect('/');
+  //   } else {
+  //     userfn.getUserbyid(req.session.id)
+  //     .then(user => {
+  //       const templateVars = {users, session_id}
+  //       res.render("product", templateVars);
+  //     })
+  //   }
+  // })
+
   router.post("/new", (req, res) => {
     const title = req.body.title;
     const price = req.body.price;

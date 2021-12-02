@@ -1,5 +1,5 @@
 #header {
-  background-color: #edd9d9;
+  background-color: #87AAAA;
 }
 
 #header nav {
@@ -12,10 +12,13 @@
 }
 
 #header nav a {
-  color: black;
-  font-size: 1.5rem;
+  color: whitesmoke;
+  font-size: 1rem;
   padding-left: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
 }
+
 
 #header nav .login-register {
   font-size: 1.5rem;

@@ -41,7 +41,6 @@ app.use("/", publicRoutes(dbConnection));
 // Note: mount other resources here, using the same pattern above
 
 
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
