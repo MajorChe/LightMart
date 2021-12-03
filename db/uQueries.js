@@ -62,6 +62,16 @@ const addFavourite = (user_id, product_id) => {
       console.log(err.message)
     })
   };
+const unFavourite = (user_id,product_id) => {
+  return pool.query('DELETE FROM favourites WHERE user_id = $1 AND product_id =$2;', [user_id, product_id])
+    .then((response) => {
+      return;
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+};
+
   const addMessage = (conversation_id, sender_id, sender_name, message) => {
     return pool.query('INSERT INTO messages (conversation_id, sender_id, sender_name, message) VALUES ($1,$2,$3,$4);', [conversation_id, sender_id, sender_name, message])
       .then((response) => {
@@ -90,23 +100,6 @@ const addFavourite = (user_id, product_id) => {
           })
         }
       })
-      //const check = pool.query(`select exists(select 1 from conversations where buyer_id = $1 AND product_id =$2)`,[buyer_id,product_id])
-      // if(pool.query(`select exists(select 1 from conversations where buyer_id = $1 AND product_id =$2)`,[buyer_id,product_id])){
-      //   console.log("hello")
-      //   return pool.query(`SELECT * FROM conversations WHERE buyer_id = $1 AND product_id = $2`,[buyer_id,product_id])
-      //   .then(response => {
-      //     return response.rows
-      //   })
-      // } else {
-      //   console.log("world")
-      //   return pool.query('INSERT INTO conversations (buyer_id, product_id) VALUES ($1,$2) RETURNING *;', [buyer_id, product_id])
-      //     .then((response) => {
-      //       return response.rows
-      //     })
-      //     .catch(err => {
-      //       console.log(err.message)
-      //     })
-      // }
       };
 
 
@@ -137,6 +130,7 @@ module.exports = {
   deleteUsersProduct,
   markAsSold,
   addFavourite,
+  unFavourite,
   newProduct,
   getAllConversations,
   getUserMessages,

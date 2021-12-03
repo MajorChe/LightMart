@@ -122,7 +122,6 @@ module.exports = (db) => {
     } else  {
        productFns.getUserMessages(req.params.id)
       .then((data) => {
-          console.log(data.length)
           if(data.length === 0){
             const conversation_id = req.params.id
             console.log(conversation_id)
@@ -150,7 +149,6 @@ module.exports = (db) => {
       let chatID = req.params.id;
         productFns.addMessage(conversation_id, sender_id, sender_name, message)
         .then((data) => {
-          console.log('params:',req.params, 'req.body:', req.body, 'session:', req.session.id)
           res.redirect(`/users/message/${chatID}`);
         });
     })
@@ -163,7 +161,6 @@ module.exports = (db) => {
     console.log("buyerid",buyer_id,"productid",product_id)
       productFns.newConversation(buyer_id, product_id)
       .then((data) => {
-        console.log(data)
         let chatID = data[0].id
         res.redirect(`/users/message/${chatID}`);
       });
@@ -174,6 +171,12 @@ module.exports = (db) => {
 
   router.post("/add/:id", (req, res) => {
     productFns.addFavourite(req.session.id, req.params.id).then((data) => {
+      res.redirect(`/users/myfavourites`);
+    });
+  });
+
+  router.post("/remove/:id", (req, res) => {
+    productFns.unFavourite(req.session.id, req.params.id).then((data) => {
       res.redirect(`/users/myfavourites`);
     });
   });

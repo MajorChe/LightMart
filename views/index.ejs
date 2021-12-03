@@ -45,13 +45,13 @@
         <option value = "asc" >Price: Low to high</option>
         <option value = "desc">Price: High to Low</option>
         </select>
-      <button type="submit" class="btn btn-primary">Filter</button>
+      <button type="submit" class="btn btn-success">Filter</button>
       </form>
      </div>
 
       <div class="row pb-5 mb-4">
         <% for(const product of user) { %>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+        <div class="col-lg-3 col-md-6 mb-4">
           <!-- Card-->
           <div class="card rounded shadow-sm border-0">
             <div class="card-body p-4"><img src="<%= product.image%>" alt="shoeimg" class="img-fluid d-block mx-auto mb-3">

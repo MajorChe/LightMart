@@ -40,6 +40,7 @@
 
                   <ul class="list-inline small">
                     <li class="list-inline-item m-0" style="font-size: 17px;"><i class="fa fa-star text-success" style="font-size: x-large;"></i> Created: <%= details.date_created %></li>
+                    <li class="list-inline-item m-0"><form method="POST" action="/users/remove/<%= details.id %>"> <input type="submit" style="background-color:rgb(101, 7, 189);  border-radius: 25px; border-color:rgb(101, 7, 189); color:white" value="Remove Favourite"></form>  </i></li>
                   </ul>
                 </div>
               </div>
