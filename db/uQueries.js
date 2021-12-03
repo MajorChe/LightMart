@@ -1,3 +1,4 @@
+const { response } = require('express');
 const pool = require('../lib/db');
 
 const getUsersProducts = (users_id) => {
@@ -72,13 +73,40 @@ const addFavourite = (user_id, product_id) => {
     };
 
     const newConversation = (buyer_id, product_id) => {
-      return pool.query('INSERT INTO conversations (buyer_id, product_id) VALUES ($1,$2) RETURNING *;', [buyer_id, product_id])
-        .then((response) => {
+      return pool.query(`select exists(select 1 from conversations where buyer_id = $1 AND product_id =$2)`,[buyer_id,product_id])
+      .then(res => {
+        if(res.rows[0].exists) {
+          return pool.query(`SELECT * FROM conversations WHERE buyer_id = $1 AND product_id = $2`,[buyer_id,product_id])
+        .then(response => {
           return response.rows
         })
-        .catch(err => {
-          console.log(err.message)
-        })
+        } else {
+          return pool.query('INSERT INTO conversations (buyer_id, product_id) VALUES ($1,$2) RETURNING *;', [buyer_id, product_id])
+          .then((response) => {
+            return response.rows
+          })
+          .catch(err => {
+            console.log(err.message)
+          })
+        }
+      })
+      //const check = pool.query(`select exists(select 1 from conversations where buyer_id = $1 AND product_id =$2)`,[buyer_id,product_id])
+      // if(pool.query(`select exists(select 1 from conversations where buyer_id = $1 AND product_id =$2)`,[buyer_id,product_id])){
+      //   console.log("hello")
+      //   return pool.query(`SELECT * FROM conversations WHERE buyer_id = $1 AND product_id = $2`,[buyer_id,product_id])
+      //   .then(response => {
+      //     return response.rows
+      //   })
+      // } else {
+      //   console.log("world")
+      //   return pool.query('INSERT INTO conversations (buyer_id, product_id) VALUES ($1,$2) RETURNING *;', [buyer_id, product_id])
+      //     .then((response) => {
+      //       return response.rows
+      //     })
+      //     .catch(err => {
+      //       console.log(err.message)
+      //     })
+      // }
       };
 
 

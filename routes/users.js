@@ -160,6 +160,7 @@ module.exports = (db) => {
   router.post("/contact/:id", (req, res) => {
     const buyer_id = req.session.id
     const product_id = req.params.id
+    console.log("buyerid",buyer_id,"productid",product_id)
       productFns.newConversation(buyer_id, product_id)
       .then((data) => {
         console.log(data)
