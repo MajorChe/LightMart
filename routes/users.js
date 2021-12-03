@@ -79,17 +79,6 @@ module.exports = (db) => {
     res.redirect("/users/mypostings");
   });
 
-  router.get("/:id", (req, res) => {
-    const session_id = req.session.id;
-    if (!req.session.id) {
-      res.redirect("/");
-    } else {
-      productFns.getProductById(req.params.id).then((product) => {
-        const templateVars = { product, session_id };
-        res.render("product", templateVars);
-      });
-    }
-  });
 
   router.post("/product/:id", (req, res) => {
     if (!req.session.id) {
@@ -109,11 +98,95 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/inbox", (req, res) => {
+    console.log('id:', req.session.id)
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+      productFns.getAllConversations(req.session.id)
+      .then((data) => {
+        const session_id = req.session.id;
+        const messages = data.reverse();
+        const templateVars = { messages, session_id };
+        res.render('inbox', templateVars );
+      });
+    }
+  });
+
+
+
+  router.get("/message/:id", (req, res) => {
+    const session_id = req.session.id;
+    if (!req.session.id) {
+      res.redirect("/");
+    } else  {
+       productFns.getUserMessages(req.params.id)
+      .then((data) => {
+          console.log(data.length)
+          if(data.length === 0){
+            const conversation_id = req.params.id
+            console.log(conversation_id)
+            const templateVars = {  session_id, conversation_id}
+
+            res.render('blankMessage', templateVars )
+          } else {
+          const session_id = req.session.id;
+          const messages = data;
+          const templateVars = { messages, session_id};
+          res.render('message', templateVars );
+        }
+      });
+    }
+  });
+
+
+
+  router.post("/reply/:id", (req, res) => {
+    const sender_id = req.session.id
+    const conversation_id = req.params.id
+    const message = req.body.message
+    userfn.getUserbyid(req.session.id).then(result => {
+      const sender_name = result.name;
+      let chatID = req.params.id;
+        productFns.addMessage(conversation_id, sender_id, sender_name, message)
+        .then((data) => {
+          console.log('params:',req.params, 'req.body:', req.body, 'session:', req.session.id)
+          res.redirect(`/users/message/${chatID}`);
+        });
+    })
+
+  });
+
+  router.post("/contact/:id", (req, res) => {
+    const buyer_id = req.session.id
+    const product_id = req.params.id
+      productFns.newConversation(buyer_id, product_id)
+      .then((data) => {
+        console.log(data)
+        let chatID = data[0].id
+        res.redirect(`/users/message/${chatID}`);
+      });
+
+  });
+
+
+
   router.post("/add/:id", (req, res) => {
-    console.log(req.body);
     productFns.addFavourite(req.session.id, req.params.id).then((data) => {
       res.redirect(`/users/myfavourites`);
     });
+  });
+
+  router.get("/:id", (req, res) => {
+    const session_id = req.session.id;
+    if (!req.session.id) {
+      res.redirect("/");
+    } else {
+      productFns.getProductById(req.params.id).then((product) => {
+        const templateVars = { product, session_id };
+        res.render("product", templateVars);
+      });
+    }
   });
   return router;
 };
